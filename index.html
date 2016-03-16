@@ -113,11 +113,11 @@
       // legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
   
     };
-    $.get('./home-data.json', function(items){
+    $.get('./home-data-smoothed.json', function(items){
       for (var i=0; i<items.length; i++) {
         
-        data.labels.push(items[i].timestamp.substring(0,16));
-        data.datasets[0].data.push(items[i].mbps);
+        data.labels.push(items[i][0]);
+        data.datasets[0].data.push(items[i][1]);
         
       }
       var myLineChart = new Chart(ctx).Line(data, options);
