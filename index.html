@@ -114,10 +114,15 @@
   
     };
     $.get('./home-data.json', function(items){
-      console.log(items);
+      for (var i=0; i<items.length; i++) {
+        
+        data.labels.push(items[i].timestamp.substring(0,16));
+        data.datasets[0].data.push(items[i].mbps);
+        
+      }
+      var myLineChart = new Chart(ctx).Line(data, options);
     })
     
-    var myLineChart = new Chart(ctx).Line(data, options);
     </script>
   </body>
 </html>
